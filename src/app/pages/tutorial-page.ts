@@ -14,7 +14,7 @@ import {Seo} from '../services/seo';
       <div class="max-w-3xl">
         <p class="text-xs font-semibold text-blue-700">小白保姆级教程</p>
         <h1 class="mt-2 font-display text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
-          Syncthing 中文教程：零基础 3 步从安装、配对到防误删设置
+          零基础 3 步上手 Syncthing：从安装、配对到防误删设置
         </h1>
         <p class="mt-4 text-base leading-relaxed text-slate-600">
           不需要注册账户，也不需要购买公网服务器。按照下面三个步骤依次操作，即可让你的多台设备自动保持文件一致。

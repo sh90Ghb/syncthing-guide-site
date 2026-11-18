@@ -13,7 +13,7 @@ import {Seo} from '../services/seo';
       <div class="max-w-3xl">
         <p class="text-xs font-semibold text-blue-700">跨平台环境指南</p>
         <h1 class="mt-2 font-display text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
-          Syncthing 中文版跨平台兼容表：全系统环境与中文配套版本
+          Syncthing 全平台系统环境兼容与配套版本一览
         </h1>
         <p class="mt-4 text-base leading-relaxed text-slate-600">
           不论是日常 Windows 办公本、MacBook、安卓手机、iPhone/iPad，还是群晖、威联通、飞牛 NAS 服务器，只要运行在同一底层协议下即可自由组成私人同步网络。

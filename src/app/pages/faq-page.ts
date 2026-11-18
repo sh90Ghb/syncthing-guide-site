@@ -18,7 +18,7 @@ import {Seo} from '../services/seo';
       <div class="max-w-3xl">
         <p class="text-xs font-semibold text-blue-700">服务说明与常见问答</p>
         <h1 class="mt-2 font-display text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
-          Syncthing 中文版购买须知、付费远程安装服务与高频答疑
+          购买须知、付费远程安装服务与高频问题解答
         </h1>
         <p class="mt-4 text-base leading-relaxed text-slate-600">
           为了保障每一位用户的体验，我们在下单前把商品包含内容、远程服务收费规则以及常见的网络与数据安全问题全部透明列明。
