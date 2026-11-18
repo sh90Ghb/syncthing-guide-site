@@ -9,6 +9,8 @@ export interface PageSeoConfig {
   path: string;
 }
 
+const PRODUCTION_ORIGIN = 'https://syncthing-guide-site.formulacalckit.com';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -28,8 +30,14 @@ export class Seo {
     this.metaService.updateTag({name: 'twitter:title', content: config.title});
     this.metaService.updateTag({name: 'twitter:description', content: config.description});
 
-    const origin = this.doc.location?.origin || '';
-    const canonicalUrl = origin ? `${origin}${config.path}` : config.path;
+    const rawOrigin = this.doc.location?.origin || '';
+    const isLocalhost =
+      !rawOrigin ||
+      rawOrigin.includes('localhost') ||
+      rawOrigin.includes('127.0.0.1');
+    const origin = isLocalhost ? PRODUCTION_ORIGIN : rawOrigin;
+    const normalizedPath = config.path === '/' ? '/' : config.path;
+    const canonicalUrl = `${origin}${normalizedPath}`;
     this.metaService.updateTag({property: 'og:url', content: canonicalUrl});
 
     let linkEl = this.doc.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
