@@ -24,10 +24,10 @@ import {
               id="purchase-heading"
               class="mt-2 font-display text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl"
             >
-              不想折腾全英文官网？按需拍下软件或远程服务
+              告别全英文官网折腾，直接带走 Syncthing 中文版方案
             </h2>
             <p class="mt-3 text-base leading-relaxed text-slate-600">
-              如果您打算自己照着图文手册 10 分钟安装，拍下「基础软件整合包」即可；如果完全不想研究网络、防火墙或 NAS 权限，请另外拍下「一对一远程代安装」专属链接。
+              如果您打算自己照着中文图文手册 10 分钟安装，拍下「中文版软件整合包」即可；如果完全不想研究网络、防火墙或 NAS 权限，请另外拍下「支持远程安装服务」专属链接。
             </p>
 
             <div class="mt-7 grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -35,12 +35,12 @@ import {
                 <div>
                   <div class="flex items-center justify-between gap-2">
                     <h3 class="text-base font-semibold text-slate-900">
-                      01. 基础软件整合包
+                      01. 中文版软件整合包
                     </h3>
-                    <span class="text-xs font-medium text-slate-600">自助安装</span>
+                    <span class="text-xs font-medium text-slate-600">全中文自助装</span>
                   </div>
                   <p class="mt-2 text-sm leading-relaxed text-slate-600">
-                    含 Win 托盘无黑框版、Mac/Linux/安卓端安装包、NAS 部署模板、防垃圾文件忽略规则及保姆级中文避坑手册。
+                    含 Win 中文托盘无黑框版、Mac/Linux/安卓中文端安装包、NAS 部署模板、防垃圾文件规则及全中文避坑手册。
                   </p>
                 </div>
 
@@ -51,7 +51,7 @@ import {
                     rel="noopener noreferrer"
                     class="inline-flex items-center gap-1.5 rounded-lg bg-blue-700 px-4 py-2 text-xs font-semibold text-white transition-colors duration-150 hover:bg-blue-800 whitespace-nowrap focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700"
                   >
-                    <span>拍下软件整合包</span>
+                    <span>拍下中文软件整合包</span>
                     <mat-icon class="!text-[15px] !h-4 !w-4 leading-4" aria-hidden="true">shopping_bag</mat-icon>
                   </a>
                   <button

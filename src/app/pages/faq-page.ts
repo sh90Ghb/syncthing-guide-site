@@ -18,7 +18,7 @@ import {Seo} from '../services/seo';
       <div class="max-w-3xl">
         <p class="text-xs font-semibold text-blue-700">服务说明与常见问答</p>
         <h1 class="mt-2 font-display text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
-          购买须知、付费远程安装服务与高频问题解答
+          Syncthing 中文版购买须知、付费远程安装服务与高频答疑
         </h1>
         <p class="mt-4 text-base leading-relaxed text-slate-600">
           为了保障每一位用户的体验，我们在下单前把商品包含内容、远程服务收费规则以及常见的网络与数据安全问题全部透明列明。
@@ -104,10 +104,10 @@ export class FaqPage implements OnInit {
 
   ngOnInit(): void {
     this.seo.updatePageMeta({
-      title: 'Syncthing 远程安装服务与常见问题解答 | SyncGuide 同步指南',
+      title: 'Syncthing 中文版购买须知、远程安装服务与中文答疑 | SyncGuide',
       description:
-        '了解淘宝下单 Syncthing 整合软件包包含内容、额外收费的一对一远程代安装服务标准，以及同步冲突保护、跨网速度与 iOS 适配常见疑问。',
-      keywords: 'Syncthing 远程安装, Syncthing 收费, Syncthing 常见问题, Syncthing 防冲突, Syncthing 教程答疑',
+        '了解 Syncthing 中文版全平台软件整合包内容、额外收费的一对一中文远程安装调试服务标准，以及同步冲突保护与中文常见问题解答。',
+      keywords: 'Syncthing中文版, Syncthing中文远程安装, Syncthing中文常见问题, Syncthing收费, Syncthing中文答疑',
       path: '/faq',
     });
   }

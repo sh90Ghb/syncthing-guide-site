@@ -32,15 +32,15 @@ import {Seo} from '../services/seo';
         <div class="grid grid-cols-1 items-stretch gap-10 lg:grid-cols-12 lg:gap-12">
           <div class="flex flex-col justify-center lg:col-span-6">
             <p class="text-xs sm:text-sm font-medium text-blue-700">
-              去中心化私有文件同步 · 跨平台免会员直连方案
+              Syncthing 全平台中文版 · 零英文门槛私有文件同步方案
             </p>
             <h1
               class="mt-3 font-display text-[clamp(2rem,3.6vw,3.15rem)] font-bold leading-[1.15] tracking-tight text-slate-950"
             >
-              告别网盘限速与年费，让电脑、手机和 NAS 自动同步
+              Syncthing 中文版：告别网盘限速，让电脑、手机和 NAS 自动同步
             </h1>
             <p class="mt-5 max-w-xl text-base leading-relaxed text-slate-600 sm:text-lg">
-              用 Syncthing 打造完全属于你自己的私有同步网：文件不经过任何第三方云服务器，局域网跑满千兆带宽，跨系统自动加密续传。不用去英文官网抓瞎，我们为您备好了全平台中文整合安装包与小白图文教程。
+              打造完全属于你的私有同步网：文件不经过任何第三方云服务器，局域网跑满千兆带宽，跨系统自动加密续传。不用去全英文官网抓瞎，我们为您配齐了开箱即用的 Syncthing 中文版整合包与全中文图文教程。
             </p>
 
             <div class="mt-8 flex flex-wrap items-center gap-4">
@@ -50,7 +50,7 @@ import {Seo} from '../services/seo';
                 rel="noopener noreferrer"
                 class="inline-flex items-center gap-2 rounded-xl bg-blue-700 px-6 py-3.5 text-sm font-semibold text-white transition-colors duration-150 hover:bg-blue-800 whitespace-nowrap focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700"
               >
-                <span>前往淘宝下单获取软件</span>
+                <span>前往淘宝拍下中文版软件</span>
                 <mat-icon class="!text-[18px] !h-[18px] !w-[18px] leading-[18px]" aria-hidden="true">arrow_outward</mat-icon>
               </a>
               <a
@@ -309,11 +309,11 @@ export class HomePage implements OnInit {
 
   ngOnInit(): void {
     this.seo.updatePageMeta({
-      title: 'Syncthing 中文教程与全平台软件整合包 | 跨平台私有文件同步指南',
+      title: 'Syncthing 中文版下载与中文教程 | 全平台中文私有文件同步指南',
       description:
-        '零基础学会 Syncthing 多设备跨平台同步：支持 Windows、macOS、Linux、Android、iOS 与群晖 NAS。提供小白图文教程、全平台软件整合包淘宝下单及额外收费的一对一远程安装服务。',
+        'Syncthing 中文版零基础教程：提供全中文界面多端软件整合包与中文图文避坑指南，支持 Windows、macOS、Linux、Android、iOS 与群晖 NAS 同步，支持淘宝购买中文软件包与付费远程安装。',
       keywords:
-        'Syncthing教程, Syncthing中文指南, Syncthing跨平台, 多设备文件同步, 私有云同步, 局域网同步, Syncthing远程安装',
+        'Syncthing中文, Syncthing中文版, Syncthing中文教程, Syncthing中文下载, Syncthing汉化版, SyncTrayzor中文版, Syncthing跨平台, Syncthing远程安装',
       path: '/',
     });
   }

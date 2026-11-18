@@ -14,7 +14,7 @@ import {Seo} from '../services/seo';
       <div class="max-w-3xl">
         <p class="text-xs font-semibold text-blue-700">小白保姆级教程</p>
         <h1 class="mt-2 font-display text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
-          零基础 3 步上手 Syncthing：从安装、配对到防误删设置
+          Syncthing 中文教程：零基础 3 步从安装、配对到防误删设置
         </h1>
         <p class="mt-4 text-base leading-relaxed text-slate-600">
           不需要注册账户，也不需要购买公网服务器。按照下面三个步骤依次操作，即可让你的多台设备自动保持文件一致。
@@ -106,10 +106,10 @@ export class TutorialPage implements OnInit {
 
   ngOnInit(): void {
     this.seo.updatePageMeta({
-      title: 'Syncthing 新手三步教程：配对、同步模式与 .stignore 忽略规则 | SyncGuide',
+      title: 'Syncthing 中文教程：新手三步配对、同步模式与 .stignore 中文说明 | SyncGuide',
       description:
-        '手把手教小白从零安装配置 Syncthing：详解设备 ID 配对、双向/仅发送/仅接收防误删模式、版本控制回收站与常用 .stignore 过滤模板。',
-      keywords: 'Syncthing 教程, Syncthing 怎么用, Syncthing 仅发送, Syncthing stignore, 文件同步防误删',
+        '手把手全中文教小白从零安装配置 Syncthing 中文版：详解设备 ID 配对、双向/仅发送/仅接收防误删模式、回收站与 .stignore 中文过滤模板。',
+      keywords: 'Syncthing中文教程, Syncthing中文怎么用, Syncthing中文指南, Syncthing仅发送, Syncthing stignore中文, 文件同步教程',
       path: '/tutorial',
     });
   }

@@ -13,7 +13,7 @@ import {Seo} from '../services/seo';
       <div class="max-w-3xl">
         <p class="text-xs font-semibold text-blue-700">跨平台环境指南</p>
         <h1 class="mt-2 font-display text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
-          Syncthing 全平台系统环境兼容与配套版本一览
+          Syncthing 中文版跨平台兼容表：全系统环境与中文配套版本
         </h1>
         <p class="mt-4 text-base leading-relaxed text-slate-600">
           不论是日常 Windows 办公本、MacBook、安卓手机、iPhone/iPad，还是群晖、威联通、飞牛 NAS 服务器，只要运行在同一底层协议下即可自由组成私人同步网络。
@@ -100,10 +100,10 @@ export class PlatformsPage implements OnInit {
 
   ngOnInit(): void {
     this.seo.updatePageMeta({
-      title: 'Syncthing 跨平台环境指南：Windows/Mac/安卓/iOS/NAS 兼容表 | SyncGuide',
+      title: 'Syncthing 中文版跨平台指南：Windows/Mac/安卓/iOS/NAS 中文配套 | SyncGuide',
       description:
-        '详细解析 Syncthing 在 Windows、macOS、Linux、Android、iOS 及群晖威联通 NAS 的版本选择、后台保活与端口防火墙配置要点，提供整合包下单与付费远程部署。',
-      keywords: 'Syncthing 跨平台, Syncthing Windows, Syncthing Mac, Syncthing 群晖NAS, Syncthing 安卓',
+        '详解 Syncthing 中文版在 Windows 中文托盘、macOS、Linux、Android 安卓汉化版、iOS 及群晖威联通 NAS 的版本选择与中文端口防火墙教程。',
+      keywords: 'Syncthing中文版, Syncthing中文跨平台, Syncthing Windows中文版, Syncthing Mac中文, Syncthing 群晖NAS中文, Syncthing安卓中文',
       path: '/platforms',
     });
   }
