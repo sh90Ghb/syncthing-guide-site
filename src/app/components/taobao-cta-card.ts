@@ -71,12 +71,12 @@ import {
                 <div>
                   <div class="flex items-center justify-between gap-2">
                     <h3 class="text-base font-semibold text-slate-900">
-                      02. 一对一远程代安装
+                      02. 支持远程安装服务
                     </h3>
                     <span class="text-xs font-semibold text-blue-700">另外收费</span>
                   </div>
                   <p class="mt-2 text-sm leading-relaxed text-slate-600">
-                    软件基础单不含远程安装；如需工程师远程帮您搞定防火墙、NAS 权限、外网穿透测试与手机保活，请拍下本远程专拍入口。
+                    基础软件单不含远程安装；如需工程师远程桌面一对一帮您装好软件、搞定防火墙、NAS 权限与手机配对，请拍下本支持远程安装专属入口。
                   </p>
                 </div>
 
@@ -87,7 +87,7 @@ import {
                     rel="noopener noreferrer"
                     class="inline-flex items-center gap-1.5 rounded-lg bg-slate-900 px-4 py-2 text-xs font-semibold text-white transition-colors duration-150 hover:bg-slate-800 whitespace-nowrap focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-900"
                   >
-                    <span>拍下远程安装服务</span>
+                    <span>拍下支持远程安装服务</span>
                     <mat-icon class="!text-[15px] !h-4 !w-4 leading-4" aria-hidden="true">support_agent</mat-icon>
                   </a>
                   <button

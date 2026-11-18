@@ -10,6 +10,7 @@ import {
   FAQ_ITEMS,
   HERO_METRICS,
   TAOBAO_PRODUCT_URL,
+  TAOBAO_REMOTE_SERVICE_URL,
 } from '../data/syncthing-content';
 import {Seo} from '../services/seo';
 
@@ -62,7 +63,13 @@ import {Seo} from '../services/seo';
             </div>
 
             <p class="mt-4 text-xs leading-relaxed text-slate-500">
-              说明：本商品出售全平台整合软件与图文教程，拍下后按手册即可自助安装；如需工程师一对一远程代安装调试，属于另外收费项目。
+              说明：本商品出售全平台整合软件与图文教程，拍下后按手册即可自助安装；也支持一对一远程安装服务（另外收费），
+              <a
+                [href]="remoteServiceUrl"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="font-medium text-blue-700 underline underline-offset-4 hover:text-blue-800"
+              >点此直达远程安装下单入口</a>。
             </p>
           </div>
 
@@ -294,6 +301,7 @@ export class HomePage implements OnInit {
   private readonly seo = inject(Seo);
 
   readonly taobaoUrl = TAOBAO_PRODUCT_URL;
+  readonly remoteServiceUrl = TAOBAO_REMOTE_SERVICE_URL;
   readonly heroMetrics = HERO_METRICS;
   readonly beginnerSteps = BEGINNER_STEPS;
   readonly faqItems = FAQ_ITEMS;
