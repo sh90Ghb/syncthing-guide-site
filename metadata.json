@@ -1,0 +1,6 @@
+{
+  "name": "SyncGuide 同步指南 — Syncthing 跨平台教学与软件方案",
+  "description": "面向零基础新手的 Syncthing 跨平台文件同步教程与软件整合包指南，支持 Windows、macOS、Linux、Android、iOS 及 NAS，提供软件下单与付费一对一远程安装调试服务。",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

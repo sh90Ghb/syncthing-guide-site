@@ -1,0 +1,81 @@
+import {ChangeDetectionStrategy, Component, inject, OnInit} from '@angular/core';
+import {FaqAccordion} from '../components/faq-accordion';
+import {TaobaoCtaCard} from '../components/taobao-cta-card';
+import {FAQ_ITEMS} from '../data/syncthing-content';
+import {Seo} from '../services/seo';
+
+@Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  selector: 'app-faq-page',
+  imports: [FaqAccordion, TaobaoCtaCard],
+  template: `
+    <div class="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
+      <div class="max-w-3xl">
+        <p class="text-xs font-semibold text-blue-700">服务说明与常见问答</p>
+        <h1 class="mt-2 font-display text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
+          购买须知、付费远程安装服务与高频问题解答
+        </h1>
+        <p class="mt-4 text-base leading-relaxed text-slate-600">
+          为了保障每一位用户的体验，我们在下单前把商品包含内容、远程服务收费规则以及常见的网络与数据安全问题全部透明列明。
+        </p>
+      </div>
+
+      <!-- Clear Service Boundary Comparison -->
+      <section class="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-2" aria-label="商品与远程服务对比">
+        <div class="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8">
+          <p class="text-xs font-medium text-slate-500">基础下单选项</p>
+          <h2 class="mt-2 font-display text-xl font-bold text-slate-950">
+            全平台软件整合包 + 小白图文教程
+          </h2>
+          <p class="mt-2 text-sm leading-relaxed text-slate-600">
+            适合具备基本电脑点击安装能力的用户。拍下后直接发货全套软件安装包与中文排错手册，自行按教程 10 分钟内完成部署。
+          </p>
+          <ul class="mt-5 space-y-2 border-t border-slate-100 pt-4 text-sm text-slate-700">
+            <li>· Windows 中文托盘免黑框版 + 开机自启设置</li>
+            <li>· macOS / Linux / Android 稳定端对应安装文件</li>
+            <li>· NAS Docker Compose 标准模板与权限图解</li>
+            <li>· 常见垃圾文件忽略规则与版本回收站推荐参数</li>
+          </ul>
+        </div>
+
+        <div class="rounded-2xl border border-blue-200 bg-blue-50/40 p-6 sm:p-8">
+          <p class="text-xs font-semibold text-blue-700">额外收费增值选项</p>
+          <h2 class="mt-2 font-display text-xl font-bold text-slate-950">
+            工程师一对一远程安装调试服务（另外收费）
+          </h2>
+          <p class="mt-2 text-sm leading-relaxed text-slate-700">
+            基础软件价格不含远程安装。若您不想自己排查防火墙、权限报错或跨网连接，可在淘宝加购远程服务，由技术工程师远程桌面一对一部署到好。
+          </p>
+          <ul class="mt-5 space-y-2 border-t border-blue-200/70 pt-4 text-sm text-slate-800">
+            <li>· 远程完成电脑端/NAS端安装与后台自启调优</li>
+            <li>· 处理 Windows 防火墙拦截与杀毒软件误报放行</li>
+            <li>· 排查 NAS 目录 PUID/PGID 无写入权限报错</li>
+            <li>· 现场配对手机端并测试文件同步成功后交付</li>
+          </ul>
+        </div>
+      </section>
+
+      <div class="mt-12">
+        <app-faq-accordion [items]="faqItems" />
+      </div>
+
+      <div class="mt-16">
+        <app-taobao-cta-card />
+      </div>
+    </div>
+  `,
+})
+export class FaqPage implements OnInit {
+  private readonly seo = inject(Seo);
+  readonly faqItems = FAQ_ITEMS;
+
+  ngOnInit(): void {
+    this.seo.updatePageMeta({
+      title: 'Syncthing 远程安装服务与常见问题解答 | SyncGuide 同步指南',
+      description:
+        '了解淘宝下单 Syncthing 整合软件包包含内容、额外收费的一对一远程代安装服务标准，以及同步冲突保护、跨网速度与 iOS 适配常见疑问。',
+      keywords: 'Syncthing 远程安装, Syncthing 收费, Syncthing 常见问题, Syncthing 防冲突, Syncthing 教程答疑',
+      path: '/faq',
+    });
+  }
+}

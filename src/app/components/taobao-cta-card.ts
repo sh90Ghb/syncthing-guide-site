@@ -1,0 +1,134 @@
+import {ChangeDetectionStrategy, Component, signal} from '@angular/core';
+import {MatIconModule} from '@angular/material/icon';
+import {TAOBAO_PRODUCT_URL} from '../data/syncthing-content';
+
+@Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  selector: 'app-taobao-cta-card',
+  imports: [MatIconModule],
+  template: `
+    <section
+      aria-labelledby="purchase-heading"
+      class="rounded-2xl border border-slate-200 bg-white p-6 sm:p-10"
+    >
+      <div class="grid grid-cols-1 items-stretch gap-8 lg:grid-cols-12">
+        <div class="flex flex-col justify-between lg:col-span-7">
+          <div>
+            <p class="text-xs font-medium text-blue-700">
+              淘宝正品发货 · 软件本体与远程服务清晰分开
+            </p>
+            <h2
+              id="purchase-heading"
+              class="mt-2 font-display text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl"
+            >
+              不想折腾全英文官网？直接带走全套省心方案
+            </h2>
+            <p class="mt-3 text-base leading-relaxed text-slate-600">
+              无论您是打算自己照着图文手册 10 分钟装好，还是希望工程师直接帮您远程配置完所有设备，都能在店铺里按需选择。
+            </p>
+
+            <div class="mt-7 grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <div class="rounded-xl border border-slate-200 bg-slate-50/80 p-5">
+                <div class="flex items-center justify-between gap-2">
+                  <h3 class="text-base font-semibold text-slate-900">
+                    基础软件整合包
+                  </h3>
+                  <span class="text-xs font-medium text-slate-600">自助安装</span>
+                </div>
+                <p class="mt-2 text-sm leading-relaxed text-slate-600">
+                  含 Win 托盘无黑框版、Mac/Linux/安卓端安装包、NAS 部署模板、防垃圾文件忽略规则及保姆级中文避坑手册。
+                </p>
+              </div>
+
+              <div class="rounded-xl border border-blue-200 bg-blue-50/50 p-5">
+                <div class="flex items-center justify-between gap-2">
+                  <h3 class="text-base font-semibold text-slate-900">
+                    一对一远程代安装
+                  </h3>
+                  <span class="text-xs font-semibold text-blue-700">另外收费</span>
+                </div>
+                <p class="mt-2 text-sm leading-relaxed text-slate-600">
+                  软件基础单不含远程安装；如需工程师远程帮您搞定防火墙、NAS 权限、外网穿透测试与手机保活，可另外拍下远程服务规格。
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-8 flex flex-wrap items-center gap-3">
+            <a
+              [href]="taobaoUrl"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 rounded-xl bg-blue-700 px-6 py-3 text-sm font-semibold text-white transition-colors duration-150 hover:bg-blue-800 whitespace-nowrap focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700"
+            >
+              <span>立即前往淘宝店铺下单</span>
+              <mat-icon class="!text-[18px] !h-[18px] !w-[18px] leading-[18px]" aria-hidden="true">shopping_bag</mat-icon>
+            </a>
+
+            <button
+              type="button"
+              (click)="copyTaobaoLink()"
+              class="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-5 py-3 text-sm font-medium text-slate-700 transition-colors duration-150 hover:bg-slate-50 hover:text-slate-950 whitespace-nowrap focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700"
+            >
+              <mat-icon class="!text-[18px] !h-[18px] !w-[18px] leading-[18px]" aria-hidden="true">
+                {{ copied() ? 'check' : 'content_copy' }}
+              </mat-icon>
+              <span>{{ copied() ? '已复制商品链接' : '复制商品网址去手机淘宝打开' }}</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5">
+          @if (!imageFailed()) {
+            <div class="relative h-full min-h-[240px] overflow-hidden rounded-xl border border-slate-200 bg-slate-100">
+              <img
+                src="/assets/images/remote_install_support_1794989139291.jpg"
+                alt="工程师远程协助配置跨平台同步网络拓扑桌面环境"
+                referrerpolicy="no-referrer"
+                (error)="onImageError()"
+                class="h-full w-full object-cover"
+              />
+              <div
+                class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950/80 via-slate-950/40 to-transparent p-5 text-white"
+              >
+                <p class="text-sm font-semibold">专业技术交付，小白零门槛落地</p>
+                <p class="mt-1 text-xs text-slate-200">
+                  支持向日葵 / ToDesk 远程协助调试，直到两台设备稳定同步成功
+                </p>
+              </div>
+            </div>
+          } @else {
+            <div
+              class="flex h-full min-h-[240px] flex-col items-center justify-center rounded-xl border border-slate-200 bg-slate-100 p-6 text-center"
+            >
+              <mat-icon class="!text-4xl !h-9 !w-9 text-blue-700" aria-hidden="true">support_agent</mat-icon>
+              <p class="mt-3 text-base font-semibold text-slate-900">一对一远程安装支持</p>
+              <p class="mt-1 text-sm text-slate-600">软件基础包与付费远程调试按需选购</p>
+            </div>
+          }
+        </div>
+      </div>
+    </section>
+  `,
+})
+export class TaobaoCtaCard {
+  readonly taobaoUrl = TAOBAO_PRODUCT_URL;
+  readonly copied = signal(false);
+  readonly imageFailed = signal(false);
+
+  async copyTaobaoLink(): Promise<void> {
+    try {
+      if (typeof navigator !== 'undefined' && navigator.clipboard) {
+        await navigator.clipboard.writeText(this.taobaoUrl);
+        this.copied.set(true);
+        setTimeout(() => this.copied.set(false), 2500);
+      }
+    } catch {
+      this.copied.set(false);
+    }
+  }
+
+  onImageError(): void {
+    this.imageFailed.set(true);
+  }
+}
