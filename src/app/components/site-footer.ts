@@ -1,7 +1,10 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {MatIconModule} from '@angular/material/icon';
 import {RouterLink} from '@angular/router';
-import {TAOBAO_PRODUCT_URL} from '../data/syncthing-content';
+import {
+  TAOBAO_PRODUCT_URL,
+  TAOBAO_REMOTE_SERVICE_URL,
+} from '../data/syncthing-content';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -45,19 +48,28 @@ import {TAOBAO_PRODUCT_URL} from '../data/syncthing-content';
           </div>
 
           <div class="md:col-span-4">
-            <h3 class="text-sm font-semibold text-slate-900">获取整合软件包与技术支持</h3>
+            <h3 class="text-sm font-semibold text-slate-900">获取软件整合包与远程安装支持</h3>
             <p class="mt-4 text-sm leading-relaxed text-slate-600">
-              前往官方合作淘宝店铺下单，即可获取全平台稳定安装包、.stignore 忽略模板与避坑手册。
+              前往官方合作淘宝店铺按需下单：可单独购买软件整合包自助安装，也可另拍远程安装服务由工程师一对一调试。
             </p>
-            <div class="mt-5">
+            <div class="mt-5 flex flex-wrap gap-2.5">
               <a
                 [href]="taobaoUrl"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="inline-flex items-center gap-2 rounded-lg bg-slate-900 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-slate-800 whitespace-nowrap"
+                class="inline-flex items-center gap-1.5 rounded-lg bg-slate-900 px-4 py-2.5 text-xs sm:text-sm font-medium text-white transition-colors hover:bg-slate-800 whitespace-nowrap"
               >
-                <span>直达淘宝商品页下单</span>
+                <span>购买软件整合包</span>
                 <mat-icon class="!text-[16px] !h-4 !w-4 leading-4" aria-hidden="true">arrow_outward</mat-icon>
+              </a>
+              <a
+                [href]="remoteServiceUrl"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-1.5 rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-xs sm:text-sm font-medium text-slate-800 transition-colors hover:bg-slate-50 whitespace-nowrap"
+              >
+                <span>预约远程安装（另收费）</span>
+                <mat-icon class="!text-[16px] !h-4 !w-4 leading-4" aria-hidden="true">support_agent</mat-icon>
               </a>
             </div>
           </div>
@@ -75,4 +87,5 @@ import {TAOBAO_PRODUCT_URL} from '../data/syncthing-content';
 })
 export class SiteFooter {
   readonly taobaoUrl = TAOBAO_PRODUCT_URL;
+  readonly remoteServiceUrl = TAOBAO_REMOTE_SERVICE_URL;
 }

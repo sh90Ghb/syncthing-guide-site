@@ -1,6 +1,9 @@
 export const TAOBAO_PRODUCT_URL =
   'https://item.taobao.com/item.htm?ft=t&id=1101981496365&skuId=6323194691359';
 
+export const TAOBAO_REMOTE_SERVICE_URL =
+  'https://item.taobao.com/item.htm?ft=t&id=1099110571619&spm=a21dvs.23580594.0.0.4fee2c1bp2gkzu';
+
 export interface PlatformPairing {
   id: string;
   label: string;

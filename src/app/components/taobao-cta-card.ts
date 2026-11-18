@@ -1,6 +1,9 @@
 import {ChangeDetectionStrategy, Component, signal} from '@angular/core';
 import {MatIconModule} from '@angular/material/icon';
-import {TAOBAO_PRODUCT_URL} from '../data/syncthing-content';
+import {
+  TAOBAO_PRODUCT_URL,
+  TAOBAO_REMOTE_SERVICE_URL,
+} from '../data/syncthing-content';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -15,67 +18,96 @@ import {TAOBAO_PRODUCT_URL} from '../data/syncthing-content';
         <div class="flex flex-col justify-between lg:col-span-7">
           <div>
             <p class="text-xs font-medium text-blue-700">
-              淘宝正品发货 · 软件本体与远程服务清晰分开
+              淘宝正品发货 · 软件本体与远程服务独立下单入口
             </p>
             <h2
               id="purchase-heading"
               class="mt-2 font-display text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl"
             >
-              不想折腾全英文官网？直接带走全套省心方案
+              不想折腾全英文官网？按需拍下软件或远程服务
             </h2>
             <p class="mt-3 text-base leading-relaxed text-slate-600">
-              无论您是打算自己照着图文手册 10 分钟装好，还是希望工程师直接帮您远程配置完所有设备，都能在店铺里按需选择。
+              如果您打算自己照着图文手册 10 分钟安装，拍下「基础软件整合包」即可；如果完全不想研究网络、防火墙或 NAS 权限，请另外拍下「一对一远程代安装」专属链接。
             </p>
 
             <div class="mt-7 grid grid-cols-1 gap-4 sm:grid-cols-2">
-              <div class="rounded-xl border border-slate-200 bg-slate-50/80 p-5">
-                <div class="flex items-center justify-between gap-2">
-                  <h3 class="text-base font-semibold text-slate-900">
-                    基础软件整合包
-                  </h3>
-                  <span class="text-xs font-medium text-slate-600">自助安装</span>
+              <div class="flex flex-col justify-between rounded-xl border border-slate-200 bg-slate-50/80 p-5">
+                <div>
+                  <div class="flex items-center justify-between gap-2">
+                    <h3 class="text-base font-semibold text-slate-900">
+                      01. 基础软件整合包
+                    </h3>
+                    <span class="text-xs font-medium text-slate-600">自助安装</span>
+                  </div>
+                  <p class="mt-2 text-sm leading-relaxed text-slate-600">
+                    含 Win 托盘无黑框版、Mac/Linux/安卓端安装包、NAS 部署模板、防垃圾文件忽略规则及保姆级中文避坑手册。
+                  </p>
                 </div>
-                <p class="mt-2 text-sm leading-relaxed text-slate-600">
-                  含 Win 托盘无黑框版、Mac/Linux/安卓端安装包、NAS 部署模板、防垃圾文件忽略规则及保姆级中文避坑手册。
-                </p>
+
+                <div class="mt-5 flex flex-wrap items-center gap-2 border-t border-slate-200/80 pt-4">
+                  <a
+                    [href]="taobaoUrl"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-1.5 rounded-lg bg-blue-700 px-4 py-2 text-xs font-semibold text-white transition-colors duration-150 hover:bg-blue-800 whitespace-nowrap focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700"
+                  >
+                    <span>拍下软件整合包</span>
+                    <mat-icon class="!text-[15px] !h-4 !w-4 leading-4" aria-hidden="true">shopping_bag</mat-icon>
+                  </a>
+                  <button
+                    type="button"
+                    (click)="copyLink('software')"
+                    class="inline-flex items-center gap-1 rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs font-medium text-slate-700 transition-colors hover:bg-slate-100 whitespace-nowrap"
+                  >
+                    <mat-icon class="!text-[14px] !h-3.5 !w-3.5 leading-3.5" aria-hidden="true">
+                      {{ copiedTarget() === 'software' ? 'check' : 'content_copy' }}
+                    </mat-icon>
+                    <span>{{ copiedTarget() === 'software' ? '已复制' : '复制链接' }}</span>
+                  </button>
+                </div>
               </div>
 
-              <div class="rounded-xl border border-blue-200 bg-blue-50/50 p-5">
-                <div class="flex items-center justify-between gap-2">
-                  <h3 class="text-base font-semibold text-slate-900">
-                    一对一远程代安装
-                  </h3>
-                  <span class="text-xs font-semibold text-blue-700">另外收费</span>
+              <div class="flex flex-col justify-between rounded-xl border border-blue-200 bg-blue-50/50 p-5">
+                <div>
+                  <div class="flex items-center justify-between gap-2">
+                    <h3 class="text-base font-semibold text-slate-900">
+                      02. 一对一远程代安装
+                    </h3>
+                    <span class="text-xs font-semibold text-blue-700">另外收费</span>
+                  </div>
+                  <p class="mt-2 text-sm leading-relaxed text-slate-600">
+                    软件基础单不含远程安装；如需工程师远程帮您搞定防火墙、NAS 权限、外网穿透测试与手机保活，请拍下本远程专拍入口。
+                  </p>
                 </div>
-                <p class="mt-2 text-sm leading-relaxed text-slate-600">
-                  软件基础单不含远程安装；如需工程师远程帮您搞定防火墙、NAS 权限、外网穿透测试与手机保活，可另外拍下远程服务规格。
-                </p>
+
+                <div class="mt-5 flex flex-wrap items-center gap-2 border-t border-blue-200/70 pt-4">
+                  <a
+                    [href]="remoteServiceUrl"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-1.5 rounded-lg bg-slate-900 px-4 py-2 text-xs font-semibold text-white transition-colors duration-150 hover:bg-slate-800 whitespace-nowrap focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-900"
+                  >
+                    <span>拍下远程安装服务</span>
+                    <mat-icon class="!text-[15px] !h-4 !w-4 leading-4" aria-hidden="true">support_agent</mat-icon>
+                  </a>
+                  <button
+                    type="button"
+                    (click)="copyLink('remote')"
+                    class="inline-flex items-center gap-1 rounded-lg border border-blue-200 bg-white px-3 py-2 text-xs font-medium text-slate-700 transition-colors hover:bg-blue-50 whitespace-nowrap"
+                  >
+                    <mat-icon class="!text-[14px] !h-3.5 !w-3.5 leading-3.5" aria-hidden="true">
+                      {{ copiedTarget() === 'remote' ? 'check' : 'content_copy' }}
+                    </mat-icon>
+                    <span>{{ copiedTarget() === 'remote' ? '已复制' : '复制链接' }}</span>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
 
-          <div class="mt-8 flex flex-wrap items-center gap-3">
-            <a
-              [href]="taobaoUrl"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-flex items-center gap-2 rounded-xl bg-blue-700 px-6 py-3 text-sm font-semibold text-white transition-colors duration-150 hover:bg-blue-800 whitespace-nowrap focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700"
-            >
-              <span>立即前往淘宝店铺下单</span>
-              <mat-icon class="!text-[18px] !h-[18px] !w-[18px] leading-[18px]" aria-hidden="true">shopping_bag</mat-icon>
-            </a>
-
-            <button
-              type="button"
-              (click)="copyTaobaoLink()"
-              class="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-5 py-3 text-sm font-medium text-slate-700 transition-colors duration-150 hover:bg-slate-50 hover:text-slate-950 whitespace-nowrap focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700"
-            >
-              <mat-icon class="!text-[18px] !h-[18px] !w-[18px] leading-[18px]" aria-hidden="true">
-                {{ copied() ? 'check' : 'content_copy' }}
-              </mat-icon>
-              <span>{{ copied() ? '已复制商品链接' : '复制商品网址去手机淘宝打开' }}</span>
-            </button>
-          </div>
+          <p class="mt-5 text-xs text-slate-500">
+            提示：电脑端点击按钮可直接打开淘宝详情页；手机端如无法直接拉起淘宝 App，可点击「复制链接」后打开手机淘宝粘贴访问。
+          </p>
         </div>
 
         <div class="lg:col-span-5">
@@ -113,18 +145,24 @@ import {TAOBAO_PRODUCT_URL} from '../data/syncthing-content';
 })
 export class TaobaoCtaCard {
   readonly taobaoUrl = TAOBAO_PRODUCT_URL;
-  readonly copied = signal(false);
+  readonly remoteServiceUrl = TAOBAO_REMOTE_SERVICE_URL;
+  readonly copiedTarget = signal<'software' | 'remote' | null>(null);
   readonly imageFailed = signal(false);
 
-  async copyTaobaoLink(): Promise<void> {
+  async copyLink(target: 'software' | 'remote'): Promise<void> {
+    const url = target === 'software' ? this.taobaoUrl : this.remoteServiceUrl;
     try {
       if (typeof navigator !== 'undefined' && navigator.clipboard) {
-        await navigator.clipboard.writeText(this.taobaoUrl);
-        this.copied.set(true);
-        setTimeout(() => this.copied.set(false), 2500);
+        await navigator.clipboard.writeText(url);
+        this.copiedTarget.set(target);
+        setTimeout(() => {
+          if (this.copiedTarget() === target) {
+            this.copiedTarget.set(null);
+          }
+        }, 2500);
       }
     } catch {
-      this.copied.set(false);
+      this.copiedTarget.set(null);
     }
   }
 
